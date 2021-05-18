@@ -30,13 +30,29 @@
 		<script src="plugin/highlight/highlight.js"></script>
 		<script src="plugin/math/math.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
+    			keyboardCondition: null,
+    			keyboard: true,
+    			controls: true,
+			    controlsLayout: 'bottom-right',
+    			controlsBackArrows: 'faded',
+    			slideNumber: "h.v",
+				showSlideNumber: 'all',
+				progress: true,
 				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
+				touch: true,
+				loop: false,
+				rtl: false,
+				navigationMode: 'default',
+				shuffle: false,
+				autoPlayMedia: null,
+				preloadIframes: null,
+				autoAnimate: true,
+				hideInactiveCursor: true,
+				hideCursorTime: 1000
+				transition: 'slide',
+                transitionSpeed: 'default',
+                backgroundTransition: 'fade',
 				plugins: [RevealHighlight, RevealMath]
 			});
 		</script>
