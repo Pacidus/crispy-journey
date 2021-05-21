@@ -31,13 +31,13 @@
 				        <ol style="list-style-type: upper-roman;">
 				            <li class="fragment">The idea</li>
 				            <ol>
-		    		            <li class="fragment">Fluid dynamics</li>
-		    		            <li class="fragment">Electrocinetiks</li>
+		    		            <li class="fragment">Macroscopic</li>
+		    		            <li class="fragment">Mesoscopic</li>
        				        </ol>
 				            <li class="fragment">The numerical shemes</li>
 				            <ol>
 		    		            <li class="fragment">Lattice Boltzmann</li>
-		    		            <li class="fragment">Poisson-Nerns-Plank</li>
+		    		            <li class="fragment">Link-flux</li>
        				        </ol>
 				            <li class="fragment">The insight</li>
 				        </ol>
@@ -48,20 +48,54 @@
 				        <h1 class="r-fit-text" >The idea</h1>
 				    </section>
 				    <section>
-				        <h3>Fluid dynamics</h3>
-				        <p>Navier-Stokes $\rightarrow$ Boltzmann equation</p>
+				      <div style="font-size: 20px">
+				        <h3>Macroscopic</h3>
+				        Hydrodynamic description of nonideal fluid mixtures
+				      </div>
 				        \[
-                \frac{\partial f}{\partial t} + \vec{v} \cdot \vec{\nabla}_{\vec{r}} f + \frac{\vec{F}_\text{ext}}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
-                        \]
-                        <p>with $C(f) := -\tau^{-1}(f-f^{eq})$ the BGK operator</p>
+				          
+				          \rho \left(\frac{\partial \vec{u}}{\partial t} + \vec{u} \cdot \vec{\nabla} \vec{u} \right) =
+				          \nu \vec{\nabla}^2 \vec{u} - \sum_k \rho_k \vec{\nabla} \beta \mu_k + \vec{F}^\text{ext}
+				        \]
+				        \[
+				          \vec{\nabla} \cdot \vec{u} = 0,
+				        \]
 				    </section>
 				    <section>
-				        <h3>Electrocinetiks</h3>
+				      <div style="font-size: 20px">
+				        <h3>Macroscopic</h3>
+				        Poisson-Nernst-Planck
+				      </div>
+				        \[
+				          \frac{\partial \rho_s \vec{u}}{\partial t} = \nu \vec{\nabla}^2 \vec{u} 
+				          - \vec{\nabla} P - k_B T (\rho_+ + \rho_-) \vec{\nabla}C - k_B T (\rho_+ - \rho_-) \vec{\nabla}V,
+				        \]
+				        \[
+				          \frac{\partial \rho_\pm}{\partial t} + \vec{\nabla} \cdot \left[ \rho_\pm \vec{u} - D_\pm \rho_\pm
+				          \vec{\nabla}(\ln \rho_\pm + C) \mp D_\pm \rho_\pm \vec{\nabla}(\varphi +V) \right] = 0,
+				        \]
+				        \[
+				          \vec{\nabla}^2 \varphi = - \kappa^2 \sinh \varphi.
+				        \]
 				    </section>
+				    <section>
+				      <div style="font-size: 20px">
+				        <h3>Mesoscopic</h3>
+				        Fluid dynamics
+				      </div>
+				      <p>Navier-Stokes $\rightarrow$ Boltzmann equation</p>
+				      \[
+              \frac{\partial f}{\partial t} + \vec{v} \cdot \vec{\nabla}_{\vec{r}} f + \frac{\vec{F}_\text{ext}}{\rho}
+              \cdot \vec{\nabla}_{\vec{v}} f = C(f)
+              \]
+              <p>with $C(f) := -\tau^{-1}(f-f^{eq})$ the BGK operator</p>
+				    </section>
+				</section>
+				<section>
+				  <h1 class="r-fit-text" >The numerical shemes</h1>
 				</section>
 			</div>
 		</div>
-
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script src="plugin/math/math.js"></script>
