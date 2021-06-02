@@ -23,7 +23,7 @@
         <section>
           <section>
             <h1 class="r-fit-text" >Laboetie</h1>
-            <p>Discourse on CFD for chemical application</br>or the mesoscopic aproch</p>
+            <p>Discourse on electrokinetics simulation</br>or the mesoscopic aproch</p>
           </section>
           <section data-auto-animate>
             <figure data-id="fig">
@@ -38,7 +38,7 @@
           <section data-auto-animate>  
             <figure data-id="fig">
               <blockquote cite="https://github.com/benrotenberg/laboetie">
-                laboetie is the fluid dynamics code for chemical applications.
+                laboetie is a fluid dynamics code for chemical applications.
               </blockquote>
               <figcaption style="font-size:.5em">$- \text{laboetie authors} -$</figcaption>
             </figure>
@@ -50,7 +50,7 @@
 
             <ol style="list-style-type: upper-roman;">
               <li class="fragment"> The physics </li>
-              <li class="fragment"> The numerical shemes </li>
+              <li class="fragment"> The numerical approach </li>
               <li class="fragment"> Exemples </li>
             </ol>
           </section>
@@ -60,10 +60,100 @@
 				    <h1 class="r-fit-text" > The physics </h1>
 				  </section>
 				  <section data-auto-animate>
-				    <p> Laboetie is used to simulate charged chemical species in a fluid medium. </p>
+				    <h3> Introduction </h3>
+				    <h4> Poisson–Boltzmann equation</h4>
 				  </section>
 				  <section data-auto-animate>
-				    <p> Laboetie is used to simulate charged chemical species in a fluid medium. </p>
+				    <h4> Poisson–Boltzmann equation</h4>
+				    <br>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Electrostatic potential :
+				      \[
+				        \vec{\nabla}^2 \psi_j = -\frac{\rho_j}{\epsilon_0 \epsilon_r}
+				      \]
+				    </div>
+				    <div style="float: left; width: 10%; height: 4em;">
+				    </div>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Charge density :
+				      \[
+				        n'_i = n_i \exp\left( \frac{- z_i e \psi_j }{k_B T}\right)
+				      \]
+				    </div>
+				  </section>
+				  <section data-auto-animate>
+				    <h4> Poisson–Boltzmann equation</h4>
+				    <br>
+				    \[
+				      \vec{\nabla}^2 \psi_j = -\frac{1}{\epsilon_0 \epsilon_r}
+				      \sum_i \left\{ n_i(z_ie) 
+				      \exp\left( \frac{- z_i e \psi_j }{k_B T}\right) \right\}
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4>Debye-Hückel theory</h4>
+				    <br>
+				    1st order :
+				    \[
+				      \vec{\nabla}^2 \psi_j = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
+				      \sum_i n_i z_i^2 \psi_j
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4>Debye-Hückel theory</h4>
+				    <br>
+				    \[
+				      \left[\frac{e^2}{\epsilon_0 \epsilon_r k_B T}
+				      \sum_i n_i z_i^2 \right] = \left[ \vec{\nabla}^2 \right]
+				      = L^{-2}
+				    \]
+				    \[
+				      \frac{1}{\lambda_D^2} = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
+				      \sum_i n_i z_i^2 = \kappa
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4>Debye-Hückel theory</h4>
+				    <br>
+				    \[
+				      \vec{\nabla}^2 \psi_j = \kappa \psi_j
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4> Bjerrum length </h4>
+				    <br>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Electrostatic potential energy :
+				      \[
+				        \frac{q_1q_2}{4 \pi \epsilon_0 \epsilon_r}\frac{1}{r}
+				      \]
+				    </div>
+				    <div style="float: left; width: 10%; height: 4em;">
+				    </div>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Thermal energy :
+				      \[
+				        k_B T
+				      \]
+				    </div>
+				  </section>
+				  <section data-auto-animate>
+				    <h4> Bjerrum length </h4>
+				    <br>
+				    \[
+				      \lambda_B = \frac{e^2}{4\pi\epsilon_0\epsilon_rk_BT}
+				    \]
+				  </section>
+				</section> 
+				<section>
+				  <section>
+				    <h1 class="r-fit-text" > The numerical approach </h1>
+				  </section>
+				  <section data-auto-animate>
+				    <p> Laboetie simulate charged chemical species in a fluid medium. </p>
+				  </section>
+				  <section data-auto-animate>
+				    <p> Laboetie simulate charged chemical species in a fluid medium. </p>
 				    $\downarrow$
 				    <div>
 				      <div style="float: left; width: 33%; height: 4em">
@@ -73,14 +163,11 @@
 				        Solve charged chemical dynamics
 				      </div>
 				      <div style="border-left: 3px solid #e6e6e6; float: left; width: 33%; height: 4em">
-				        Solve Electric field interactions
+				        Solve Electric field
 				      </div>
 				    </div>
 				  </section>
-				  
-				  <section data-autoslide="200">
-				  </section>
-				  <section data-transition="slide" data-auto-animate>
+				  <section data-auto-animate>
 				    <h2 data-id="title_1"> Fluid dynamics </h2>
 				    <u style="float: left">Navier-Stokes equation :</u> 
 				    <!--for uncompresible fluid and k chemical species-->
@@ -102,9 +189,8 @@
                 \]
               </div>
 				  </section>
-				  <section data-auto-animate>
-				    <h2> Fluid dynamics </h2>
-
+          <section data-auto-animate>
+				    <h2 data-id="title_1"> Fluid dynamics </h2>
 				    <div data-id="equation">
 				      <u style="float: left">Boltzmann equation :</u> 
 				      <!--for uncompresible fluid this time
@@ -114,26 +200,38 @@
                   + \frac{\Fext}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
                 \]
               </div>
-				  </section>
-				  <section data-auto-animate>
-				    <h2> Fluid dynamics </h2>
-
-				    <div data-id="equation">
-				      <u style="float: left">Boltzmann equation :</u> 
-				      <!--for uncompresible fluid this time
-				          the species will act like forces on the fluid-->
-				        \[
-                  \pderiv{f}{t} + \v \cdot \vec{\nabla}_{\r} f
-                  + \frac{\Fext}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
-                \]
-              </div>
+              with $C(f)$ the BGK collision operator.
               \[
-                C(f) := - \tau^{-1} (f - f^{\text{eq}})
+                C(f) := - \tau^{-1} \left( f - f^\text{eq} \right)
               \]
 				  </section>
-				  <section data-autoslide="200">
+				  <section>
+				    <h2 data-id="title_1"> charged chemical dynamics </h2>
+				    <div data-id="equation">
+				      <u style="float: left">links-flux method :</u>
+				        \[
+				          \pderiv{\rho_k}{t} = -D_k \vec{\nabla} \rho_k - z_k e D_k \rho_k \vec{\nabla} \psi
+                \]
+              </div>
 				  </section>
-				  
+				  <section>
+				    <h2 data-id="title_1"> Electric field </h2>
+				    <div data-id="equation">
+				      <u style="float: left">Poisson :</u>
+				        \[
+				          \vec{\nabla}^2 \psi = \frac{e \sum_k z_k\rho_k}{\epsilon_0 \epsilon_r}
+                \]
+              </div>
+				  </section>
+				</section>
+				<section>
+				  <section>
+				    <h1 class="r-fit-text" > Exemples </h1>
+				  </section>
+				  <section>
+				    <h4>debye-hückel resolution</h4>
+				    <img src="assets/debye-hückel.svg" width="33%">
+				  </section>
 				</section>
 			</div>
 		</div>
