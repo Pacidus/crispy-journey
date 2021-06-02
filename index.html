@@ -189,7 +189,24 @@
                 \]
               </div>
 				  </section>
-          
+          				  <section data-auto-animate>
+				    <h2 data-id="title_1"> Fluid dynamics </h2>
+				    <u style="float: left">Navier-Stokes equation :</u>
+				    <div data-id="equation">
+				      <u style="float: left">Boltzmann equation :</u> 
+				      <!--for uncompresible fluid this time
+				          the species will act like forces on the fluid-->
+				        \[
+                  \pderiv{f}{t} + \v \cdot \vec{\nabla}_{\r} f
+                  + \frac{\Fext}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
+                \]
+              </div>
+              with $C(f)$ the BGK collision operator.
+              \[
+                C(f) := - \tau^{-1} \left( f - f^\text{eq} \right)
+              \]
+               
+				  </section>
 				</section>
 				<section>
 				  <section>
