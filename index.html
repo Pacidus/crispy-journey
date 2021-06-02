@@ -69,7 +69,7 @@
 				    <div style="float: left; width: 45%; height: 4em">
 				      Electrostatic potential :
 				      \[
-				        \vec{\nabla}^2 \psi_j = -\frac{\rho_j}{\epsilon_0 \epsilon_r}
+				        \vec{\nabla}^2 \psi = -\dfrac{e \sum_i z_i\rho_i}{\epsilon_0 \epsilon_r}
 				      \]
 				    </div>
 				    <div style="float: left; width: 10%; height: 4em;">
@@ -77,7 +77,7 @@
 				    <div style="float: left; width: 45%; height: 4em">
 				      Charge density :
 				      \[
-				        n'_i = n_i \exp\left( \frac{- z_i e \psi_j }{k_B T}\right)
+				        n'_i = n_i \exp\left( \frac{- z_i e \psi }{k_B T}\right)
 				      \]
 				    </div>
 				  </section>
@@ -85,9 +85,9 @@
 				    <h4> Poisson–Boltzmann equation</h4>
 				    <br>
 				    \[
-				      \vec{\nabla}^2 \psi_j = -\frac{1}{\epsilon_0 \epsilon_r}
+				      \vec{\nabla}^2 \psi = -\frac{1}{\epsilon_0 \epsilon_r}
 				      \sum_i \left\{ n_i(z_ie) 
-				      \exp\left( \frac{- z_i e \psi_j }{k_B T}\right) \right\}
+				      \exp\left( \frac{- z_i e \psi }{k_B T}\right) \right\}
 				    \]
 				  </section>
 				  <section data-auto-animate>
@@ -95,8 +95,8 @@
 				    <br>
 				    1st order :
 				    \[
-				      \vec{\nabla}^2 \psi_j = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
-				      \sum_i n_i z_i^2 \psi_j
+				      \vec{\nabla}^2 \psi = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
+				      \sum_i n_i z_i^2 \psi
 				    \]
 				  </section>
 				  <section data-auto-animate>
@@ -109,14 +109,14 @@
 				    \]
 				    \[
 				      \frac{1}{\lambda_D^2} = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
-				      \sum_i n_i z_i^2 = \kappa
+				      \sum_i n_i z_i^2 = \kappa^2
 				    \]
 				  </section>
 				  <section data-auto-animate>
 				    <h4>Debye-Hückel theory</h4>
 				    <br>
 				    \[
-				      \vec{\nabla}^2 \psi_j = \kappa \psi_j
+				      \vec{\nabla}^2 \psi_j = \kappa^2 \psi_j
 				    \]
 				  </section>
 				  <section data-auto-animate>
@@ -219,7 +219,7 @@
 				    <div data-id="equation">
 				      <u style="float: left">Poisson :</u>
 				        \[
-				          \vec{\nabla}^2 \psi = \frac{e \sum_k z_k\rho_k}{\epsilon_0 \epsilon_r}
+				          \vec{\nabla}^2 \psi = -\frac{e \sum_k z_k\rho_k}{\epsilon_0 \epsilon_r}
                 \]
               </div>
 				  </section>
