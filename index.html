@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-		<title>Stage</title>
+		<title>Soutenance de stage</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -24,13 +24,13 @@
               <img src="assets/phenix.svg" alt="logo PHENIX" height="100%" style="position: absolute; right:0%;">
         	  </div>
             <div style="border: 5px solid #111; background-color: #444; width: 100%">
-                <h1 style="font-size:89%;">Simulation Lattice Boltzmann Electrocinetique <br> et <br> application aux nano-condensateurs</h1>
+                <h1 style="font-size:89%;">Simulation Lattice Boltzmann Électrocinetique <br> et <br> application aux nano-condensateurs</h1>
             </div>
             <p>
               <em>Yohan Duarte</em> <br>
             </p>
             <p style="width: 120%; font-size:62%; transform: translateX(-10%);">
-              Stage au laboratoire PHENIX : physicochimie des électrolytes et nanosystèmes interfaciaux (UMR 8234). <br>
+              Stage au laboratoire PHENIX : <br> Physicochimie des électrolytes et nanosystèmes interfaciaux (UMR 8234). <br>
               Sous la supervision de <em>Benjamin Rotenberg.</em>
             <p>
           <p>
@@ -42,18 +42,26 @@
             <p style="font-size:80%;">Modélisation et Expériences Multi-échelles</p>
       			<div style="height:90%; width:90%; margin:auto;">
               <img src="assets/memscales.png" alt="memscales">
+              <p style="transform: translateY(-1.7cm);">
+                <em style="font-size:40%;">figure 1: Méthodes et expériences employées par MEM</em>
+              </p>             
       			</div>
           </section>
         </section>
         <section>
           <h1 style="font-size:150%">Usage des condensateurs</h1>
           <ol>
-            <li class="fragment"> Traitement du signal</li>
-            <li class="fragment"> Stockage d'energie  </li>
-            <li class="fragment"> Mesure (Electrodes) </li>
+            <li class="fragment">Traitement du signal</li>
+            <li class="fragment">Stockage d'energie</li>
+            <li class="fragment">Détection avec des électrodes</li>
           </ol>
           <br>
-          <img class="fragment" src="assets/probe.png" width="40%" alt="">
+          <div class="fragment">
+            <img src="assets/probe.png" width="40%" alt="">
+            <p style="transform: translateY(-1.7cm);">
+              <em style="font-size:40%;">figure 2: Schéma d'un dispositif de détection nano-fluidique</em>
+            </p> 
+          </div>
         </section>
         <section>
           <section>
@@ -61,7 +69,9 @@
             <div style="height:30%; width:50%; text-align:center; margin:auto;">
               <div style="position: relative; bottom: 0%; left: 0%; height:50%; width:100%;">
                 <img src="assets/capa.svg" style="object-fit: contain; object-position: 50% 50%;" alt="">
-                <em style="font-size:40%"> figure 1: shema d'un condensateur</em>
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 3: Schéma d'un condensateur</em>
+                </p>
       			  </div>
       			  <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
               \[
@@ -76,9 +86,11 @@
             <div style="width:50%; text-align:center; margin:auto;">
               <div style="height:30%; width:100%;">
                 <img src="assets/capadce.svg" style="object-fit: contain; object-position: 50% 50%;" alt="">
-                <em style="font-size:40%"> figure 2: shema d'un condensateur à double couche électrochimique</em>
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 4: Schéma d'un condensateur à double couche électrochimique</em>
+                </p>
       			  </div>
-      			  <div style="position:relative; left:50%; width:150%; transform: translateX(-50%); height:4em;">
+      			  <div style="position:relative; left:50%; width:150%; transform: translate(-50%, -1.7cm); height:4em;">
                 <p style="position:absolute; left:0%; font-size:70%; background-color: #445; padding:.05%; width:45%; height:5em;">
                   \[
                     C = \epsilon_0 \epsilon_r \frac{S}{2 \lambda_D}
@@ -139,26 +151,18 @@
         </section>
         <section>
           <section>
-            <h1 style="font-size:80%">Methodes utilisées</h1>
-            <div style="float: left; display: flex; align-items: center; justify-content: center; width: 100%">
-              <div style="flex-basis: 200%; font-size: 60%;">
-                Naviers-Stokes $\rightarrow$ Latice Boltzmann Method
+            <h1 style="font-size:80%">Méthodes utilisées</h1>
+            <div style="display: flex; align-items: center;justify-content: center; width: 100%">
+              <div style="text-align: left;  flex: 1 1 auto; font-size: 60%;">
+                Navier-Stokes $\rightarrow$ Lattice Boltzmann Method<br>
+                Nernst-Planck $\rightarrow$ Link-Flux<br>
+                Poisson $\rightarrow$ Successive over relaxation method
               </div>
-              <div style="flex-basis: 100%;">
-                <img src="assets/D3Q19.png" width="75%" alt="">
-              </div>
-              <div style="flex-basis: 100%; font-size: 40%;">
-                <em>figure : représentation de la géometrie D3Q19</em>
-              </div>
-            </div>
-            <div style="float: left; display: flex; align-items: center; justify-content: center; width: 100%">
-              <div style="flex-basis: 100%; font-size: 60%;">
-                Nernst-Planck $\rightarrow$ Link-Flux
-              </div>
-            </div>
-            <div style="float: left; display: flex; align-items: center; justify-content: center; width: 100%">
-              <div style="flex-basis: 100%; font-size: 60%;">
-                Poisson $\rightarrow$ over relaxation method
+              <div style="width: 49%">
+                <img src="assets/D3Q19.png" alt="">
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 5: Représentation de la géometrie D3Q19</em>
+                </p>
               </div>
             </div>
           </section>
@@ -166,53 +170,81 @@
         <section>
           <section>
             <h1 style="font-size:60%">Etat stationnaire: Effet de la concentration</h1>
-            <p style="font-size:40%"> $\Delta V = 2.5 mV$ (domaine de validité de Debye-Hückel) et $L = 50 nm$</p>
-            <div style="float: left; height:30%; width:33%;">
-              <img src="assets/DH1.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%"> figure 4: $c_\infty = 1\cdot10^{-3} mol/L$</em>
-    			  </div>
-    			  <div style="float: left; height:30%; width:33%;">
-              <img src="assets/DH2.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%"> figure 5: $c_\infty = 1\cdot10^{-2} mol/L$</em>
-    			  </div>
-    			  <div style="float: left; height:30%; width:33%;">
-              <img src="assets/DH3.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%; "> figure 6: $c_\infty = 1\cdot10^{-1} mol/L$</em>
-    			  </div>
+            <p style="font-size:50%"> $\Delta V = 2.5 mV$ (domaine de validité de Debye-Hückel) et $L = 50 nm$</p>
+    			  <div style="display: flex; align-items: center; justify-content: center; width: 100%">
+              <div style="flex: 1 1 auto;">
+                <img src="assets/DH1.svg" alt="">
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 6: $c_\infty = 1\cdot10^{-3} mol/L$</em>
+                </p>
+      			  </div>
+      			  <div style="flex: 1 1 auto;">
+                <img src="assets/DH2.svg" alt="">
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 7: $c_\infty = 1\cdot10^{-2} mol/L$</em>
+                </p>
+      			  </div>
+      			  <div style="flex: 1 1 auto;">
+                <img src="assets/DH3.svg" alt="">
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 8: $c_\infty = 1\cdot10^{-1} mol/L$</em>
+                </p>
+      			  </div>
+      			<div>
           </section>
           <section>
             <h1 style="font-size:60%">Etat stationnaire: Effet du potentiel</h1>
-            <p style="font-size:40%"> $c_\infty = 1\cdot10^{-3} mol/L ~~~$ et $~~~ L = 50 nm$</p>
-            <div style="float: left; height:30%; width:33%;">
-              <img src="assets/DH1.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%"> figure 7: $\Delta V = 2.5 mV$</em>
-    			  </div>
-    			  <div style="float: left; height:30%; width:33%;">
-              <img src="assets/DH4.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%"> figure 8: $\Delta V = 25 mV$</em>
-    			  </div>
-    			  <div style="float: left; height:30%; width:33%;">
-              <img src="assets/DH7.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%"> figure 9: $\Delta V = 1 V$</em>
-    			  </div>
+            <p style="font-size:50%;"> $c_\infty = 1\cdot10^{-3} mol/L ~~~$ et $~~~ L = 50 nm$</p>
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%">
+              <div style="flex: 1 1 auto;">
+                <img src="assets/DH1.svg" alt="">
+                <p style="transform: translateY(-1.7cm);"><em style="font-size:40%;">figure 9: $\Delta V = 2.5 mV$</em></p>
+      			  </div>
+      			  <div style="flex: 1 1 auto;">
+                <img src="assets/DH4.svg" alt="">
+                <p style="transform: translateY(-1.7cm);"><em style="font-size:40%;">figure 10: $\Delta V = 25 mV$</em></p>
+      			  </div>
+      			  <div style="flex: 1 1 auto;">
+                <img src="assets/DH7.svg" alt="">
+                <p style="transform: translateY(-1.7cm);"><em style="font-size:40%;">figure 11: $\Delta V = 1 V$</em></p>
+      			  </div>
+      			<div>
           </section>
           <section>
-            <h1 style="font-size:60%">Etat transitoire: Charge d'un condensateur</h1>
-            <p style="font-size:40%"> $c_\infty = 1\cdot10^{-3} mol/L ~~~$ et $~~~ L = 50 nm$</p>
-            <div style="float: left; height:30%; width:49%;">
-              <img src="assets/dynall.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%"> figure 10: Charge du condensateur en fonction du temps</em>
-    			  </div>
-    			  <div style="float: left; height:30%; width:49%;">
-              <img src="assets/dyn.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
-              <em style="font-size:40%"> figure 11: Charge du condensateur normalisé en fonction du temps</em>
-    			  </div>
+            <h1 style="font-size:60%">Regime transitoire: Charge d'un condensateur</h1>
+            <p style="font-size:50%"> $c_\infty = 1\cdot10^{-3} mol/L ~~~$ et $~~~ L = 50 nm$</p>
+            <div style="">
+              <div style="float: left; width:49.9%; object-fit: contain;">
+                <img src="assets/dynall.svg" alt="">
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 12: Charge du condensateur en fonction du temps</em>
+                </p>
+      			  </div>
+      			  <div style="float: left; width:49.9%; object-fit: contain;">
+                <img src="assets/dyn.svg" alt="">
+                <p style="transform: translateY(-1.7cm);">
+                  <em style="font-size:40%;">figure 13: Charge du condensateur normalisée en fonction du temps</em>
+                </p>
+      			  </div>
+      			<div>
           </section>
         </section>
         <section>
-          <h1 style="font-size:140%;">Conclusion & ouverture</h1>
+          <h1 style="font-size:140%;">Conclusion</h1>
           <ol>
-            <li class="fragment"> Changer la géometrie</li>
+            <li class="fragment">Simulation numérique de la dynamique des ions dans un nano-condensateur</li>
+            <li class="fragment">Influence de la discrétisation</li>
+            <li class="fragment">Comparaison avec Debye-Hückel en régime linéaire</li>
+            <li class="fragment">La méthode numérique n'est pas limitée à ce régime</li>
+            <li class="fragment">Accès au régime transitoire</li>
+          </ol>
+        </section>
+        <section>
+          <h1 style="font-size:140%;">Perspectives</h1>
+          <ol>
+            <li class="fragment">Couplage avec la dynamique du solvant</li>
+            <li class="fragment">Changer la géometrie</li>
+            <li class="fragment">Aller au delà du champ moyen</li>
           </ol>
         </section>
 			</div>
