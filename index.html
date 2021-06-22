@@ -1,10 +1,10 @@
 <!doctype html>
-<html>
+<html  lang="fr" xml:lang="fr">
   <head>
     <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-		<title>Laboetie</title>
+		<title>Stage</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -15,232 +15,206 @@
 	</head>
 	<body>
     <div class="reveal">
-      <div style="float: left; position: relative; top: 0; left: 0;">
-        <img src="assets/Sorbonne_University.png" width="150" style="position: relative; top: 0px; left: 0px; padding: 0em 0em 0em .5em;">
-        <img src="assets/Logo_phenix.svg" width="150" style="position: absolute; top: 70px; left: 0px; padding: 0em 0em 0em .5em;">
-			</div>
 			<div class="slides">
         <section>
           <section>
-            <h1 class="r-fit-text" >Laboetie</h1>
-            <p>Discourse on electrokinetics simulation</br>or the mesoscopic aproch</p>
-          </section>
-          <section data-auto-animate>
-            <figure data-id="fig">
-              <blockquote cite="https://github.com/benrotenberg/laboetie">
-                laboetie is a fluid dynamics code for chemical applications.
-              </blockquote>
-              <figcaption style="font-size:.5em">$- \text{laboetie authors} -$</figcaption>
-            </figure>
-
-            <!-- Historically it has been used to simulate charged chemical species in a fluid medium. -->
-          </section>
-          <section data-auto-animate>  
-            <figure data-id="fig">
-              <blockquote cite="https://github.com/benrotenberg/laboetie">
-                laboetie is a fluid dynamics code for chemical applications.
-              </blockquote>
-              <figcaption style="font-size:.5em">$- \text{laboetie authors} -$</figcaption>
-            </figure>
-
-
-            <p style="position: relative; top: 0; left: -7em;">
-              <u>Plan:</u>
+            <div style="position:absolute; left:0%; top:-36%; height:30%; width:100%;">
+              <img src="assets/SU.png" alt="logo Sorbonne"   height="100%" style="position: absolute; left:0%;">
+              <img src="assets/CNRS.svg" alt="logo CNRS"     height="100%" style="position: absolute; left:50%; transform: translateX(-50%);">
+              <img src="assets/phenix.svg" alt="logo PHENIX" height="100%" style="position: absolute; right:0%;">
+        	  </div>
+            <div style="border: 5px solid #111; background-color: #444; width: 100%">
+                <h1 style="font-size:89%;">Simulation Lattice Boltzmann Electrocinetique <br> et <br> application aux nano-condensateurs</h1>
+            </div>
+            <p>
+              <em>Yohan Duarte</em> <br>
             </p>
-
-            <ol style="list-style-type: upper-roman;">
-              <li class="fragment"> The physics </li>
-              <li class="fragment"> The numerical approach </li>
-              <li class="fragment"> Exemples </li>
-            </ol>
+            <p style="width: 120%; font-size:62%; transform: translateX(-10%);">
+              Stage au laboratoire PHENIX : physicochimie des électrolytes et nanosystèmes interfaciaux (UMR 8234). <br>
+              Sous la supervision de <em>Benjamin Rotenberg.</em>
+            <p>
+          <p>
+            <script> document.write(new Date().toLocaleDateString()); </script>
+          </p>
           </section>
-				</section>
-				<section>
-				  <section>
-				    <h1 class="r-fit-text" > The physics </h1>
-				  </section>
-				  <section data-auto-animate>
-				    <h3> Introduction </h3>
-				    <h4> Poisson–Boltzmann equation</h4>
-				  </section>
-				  <section data-auto-animate>
-				    <h4> Poisson–Boltzmann equation</h4>
-				    <br>
-				    <div style="float: left; width: 45%; height: 4em">
-				      Electrostatic potential :
-				      \[
-				        \vec{\nabla}^2 \psi = -\dfrac{e \sum_i z_i\rho_i}{\epsilon_0 \epsilon_r}
-				      \]
-				    </div>
-				    <div style="float: left; width: 10%; height: 4em;">
-				    </div>
-				    <div style="float: left; width: 45%; height: 4em">
-				      Charge density :
-				      \[
-				        n'_i = n_i \exp\left( \frac{- z_i e \psi }{k_B T}\right)
-				      \]
-				    </div>
-				  </section>
-				  <section data-auto-animate>
-				    <h4> Poisson–Boltzmann equation</h4>
-				    <br>
-				    \[
-				      \vec{\nabla}^2 \psi = -\frac{1}{\epsilon_0 \epsilon_r}
-				      \sum_i \left\{ n_i(z_ie) 
-				      \exp\left( \frac{- z_i e \psi }{k_B T}\right) \right\}
-				    \]
-				  </section>
-				  <section data-auto-animate>
-				    <h4>Debye-Hückel theory</h4>
-				    <br>
-				    1st order :
-				    \[
-				      \vec{\nabla}^2 \psi = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
-				      \sum_i n_i z_i^2 \psi
-				    \]
-				  </section>
-				  <section data-auto-animate>
-				    <h4>Debye-Hückel theory</h4>
-				    <br>
-				    \[
-				      \left[\frac{e^2}{\epsilon_0 \epsilon_r k_B T}
-				      \sum_i n_i z_i^2 \right] = \left[ \vec{\nabla}^2 \right]
-				      = L^{-2}
-				    \]
-				    \[
-				      \frac{1}{\lambda_D^2} = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
-				      \sum_i n_i z_i^2 = \kappa^2
-				    \]
-				  </section>
-				  <section data-auto-animate>
-				    <h4>Debye-Hückel theory</h4>
-				    <br>
-				    \[
-				      \vec{\nabla}^2 \psi_j = \kappa^2 \psi_j
-				    \]
-				  </section>
-				  <section data-auto-animate>
-				    <h4> Bjerrum length </h4>
-				    <br>
-				    <div style="float: left; width: 45%; height: 4em">
-				      Electrostatic potential energy :
-				      \[
-				        \frac{q_1q_2}{4 \pi \epsilon_0 \epsilon_r}\frac{1}{r}
-				      \]
-				    </div>
-				    <div style="float: left; width: 10%; height: 4em;">
-				    </div>
-				    <div style="float: left; width: 45%; height: 4em">
-				      Thermal energy :
-				      \[
-				        k_B T
-				      \]
-				    </div>
-				  </section>
-				  <section data-auto-animate>
-				    <h4> Bjerrum length </h4>
-				    <br>
-				    \[
-				      \lambda_B = \frac{e^2}{4\pi\epsilon_0\epsilon_rk_BT}
-				    \]
-				  </section>
-				</section> 
-				<section>
-				  <section>
-				    <h1 class="r-fit-text" > The numerical approach </h1>
-				  </section>
-				  <section data-auto-animate>
-				    <p> Laboetie simulate charged chemical species in a fluid medium. </p>
-				  </section>
-				  <section data-auto-animate>
-				    <p> Laboetie simulate charged chemical species in a fluid medium. </p>
-				    $\downarrow$
-				    <div>
-				      <div style="float: left; width: 33%; height: 4em">
-				        Solve fluid dynamics
-				      </div>
-				      <div style="border-left: 3px solid #e6e6e6; float: left; width: 33%; height: 4em">
-				        Solve charged chemical dynamics
-				      </div>
-				      <div style="border-left: 3px solid #e6e6e6; float: left; width: 33%; height: 4em">
-				        Solve the electric potential
-				      </div>
-				    </div>
-				  </section>
-				  <section data-auto-animate>
-				    <h2 data-id="title_1"> Fluid dynamics </h2>
-				    <u style="float: left">Navier-Stokes equation :</u> 
-				    <!--for uncompresible fluid and k chemical species-->
-				    \[
-				      \rho \left(\pderiv{\u}{t} + \u \cdot \vec{\nabla} \u\right)
-              = \eta \vec{\nabla}^2 \u
-              - \sum^N_{k=1} \rho_k \vec{\nabla} \mu_k + \Fext
-				    \]
-				    <div>
-				    $\downarrow$
-				    </div>
-				    <div data-id="equation">
-				      <u style="float: left">Boltzmann equation :</u> 
-				      <!--for uncompresible fluid this time
-				          the species will act like forces on the fluid-->
-				        \[
-                  \pderiv{f}{t} + \v \cdot \vec{\nabla}_{\r} f
-                  + \frac{\Fext}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
-                \]
-              </div>
-				  </section>
-          <section data-auto-animate>
-				    <h2 data-id="title_1"> Fluid dynamics </h2>
-				    <div data-id="equation">
-				      <u style="float: left">Boltzmann equation :</u> 
-				      <!--for uncompresible fluid this time
-				          the species will act like forces on the fluid-->
-				        \[
-                  \pderiv{f}{t} + \v \cdot \vec{\nabla}_{\r} f
-                  + \frac{\Fext}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
-                \]
-              </div>
-              with $C(f)$ the BGK collision operator.
+          <section>
+            <h1 style="font-size:150%;">L'équipe MEM :</h1>
+            <p style="font-size:80%;">Modélisation et Expériences Multi-échelles</p>
+      			<div style="height:90%; width:90%; margin:auto;">
+              <img src="assets/memscales.png" alt="memscales">
+      			</div>
+          </section>
+        </section>
+        <section>
+          <h1 style="font-size:150%">Usage des condensateurs</h1>
+          <ol>
+            <li class="fragment"> Traitement du signal</li>
+            <li class="fragment"> Stockage d'energie  </li>
+            <li class="fragment"> Mesure (Electrodes) </li>
+          </ol>
+          <br>
+          <img class="fragment" src="assets/probe.png" width="40%" alt="">
+        </section>
+        <section>
+          <section>
+            <h1 style="font-size:80%">Condensateurs</h1>
+            <div style="height:30%; width:50%; text-align:center; margin:auto;">
+              <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
               \[
-                C(f) := - \tau^{-1} \left( f - f^\text{eq} \right)
+                C = \epsilon_0 \epsilon_r \frac{S}{d}
               \]
-				  </section>
-				  <section>
-				    <h2 data-id="title_1"> charged chemical dynamics </h2>
-				    <div data-id="equation">
-				      <u style="float: left">link-flux method :</u>
-				        \[
-				          \pderiv{\rho_k}{t} = -D_k \vec{\nabla} \rho_k - z_k e D_k \rho_k \vec{\nabla} \psi
-                \]
+              </p>
+              <div style="position: relative; bottom: 0%; left: 0%; height:50%; width:100%;">
+                <img src="assets/capa.svg" style="object-fit: contain; object-position: 50% 50%;" alt="">
+                <em style="font-size:40%"> figure 1: shema d'un condensateur</em>
+      			  </div>
+      			</div>
+          </section>
+          <section>
+            <h1 style="font-size:80%">Supercondensateurs</h1>
+            <h1 style="font-size:60%">à double couche électrochimique</h1>
+            <div style="width:50%; text-align:center; margin:auto;">
+              <div style="position:relative; left:50%; width:150%; transform: translateX(-50%); height:4em;">
+                <p style="position:absolute; left:0%; font-size:70%; background-color: #445; padding:.05%; width:45%; height:5em;">
+                  \[
+                    C = \epsilon_0 \epsilon_r \frac{S}{2 \lambda_D}
+                  \]
+                </p>
+                <p style="position:absolute; right:0%; font-size:70%; background-color: #445; padding:.05%; width:45%; height:5em;">
+                  \[
+                    \lambda_D = \sqrt{\frac{\epsilon_0 \epsilon_r k_B T}{c_\infty}}
+                  \]
+                </p>
               </div>
-				  </section>
-				  <section>
-				    <h2 data-id="title_1"> Electric field </h2>
-				    <div data-id="equation">
-				      <u style="float: left">Poisson :</u>
-				        \[
-				          \vec{\nabla}^2 \psi = -\frac{e \sum_k z_k\rho_k}{\epsilon_0 \epsilon_r}
-                \]
+              <div style="height:30%; width:100%;">
+                <img src="assets/capadce.svg" style="object-fit: contain; object-position: 50% 50%;" alt="">
+                <em style="font-size:40%"> figure 2: shema d'un condensateur à double couche électrochimique</em>
+      			  </div>
+      			</div>
+          </section>
+          <section>
+            <h1 style="font-size:80%">Poisson-Nernst-Planck (Stokes)</h1>
+            <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
+              \[
+                \frac{\partial c_i}{\partial t} = -\nabla \cdot J_i 
+              \]
+              </p>
+              <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
+              \[
+              J_i = uc_i - D_i \nabla c_i - \frac{D_iz_ie}{k_\mathrm{B} T}c_i\nabla \psi
+              \]
+              </p>
+              <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
+              \[
+                \nabla^2 \psi = - \frac{\rho}{\epsilon_0 \epsilon_r} = - \frac{1}{\epsilon_0 \epsilon_r} \sum_i c_i z_i e
+              \]
+              </p>
+          </section>
+          <section>
+            <h1 style="font-size:80%">Etat stationnaire: Poisson-Boltzmann</h1>
+              <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
+              \[
+                \nabla^2\psi=-\frac{1}{\epsilon_0\epsilon_r} \sum_i c_{i,\infty}z_ie \exp \left( \frac{-z_ie\psi}{k_{\rm B}T} \right) 
+              \]
+              </p>
+          </section>
+          <section>
+            <h1 style="font-size:80%">Etat stationnaire: Debye-Hückel</h1>
+              <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
+              \[
+                \nabla^2\psi=-\frac{1}{\epsilon_0\epsilon_r} \sum_i c_{i,\infty}z_ie \exp \left( \frac{-z_ie\psi}{k_{\rm B}T} \right) 
+              \]
+              </p>
+              <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
+              \[
+                \psi << \frac{k_B T}{e} \approx 25mV
+              \]
+              </p>
+              <p style="font-size:70%; background-color: #445; padding:.1%; margin:5%; height:70%; width:90%;">
+              \[
+                \nabla^2 \psi = \frac{1}{\lambda_D^2} \psi
+              \]
+              </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1 style="font-size:80%">Methodes utilisées</h1>
+            <div style="float: left; display: flex; align-items: center; justify-content: center; width: 100%">
+              <div style="flex-basis: 200%; font-size: 60%;">
+                Naviers-Stokes $\rightarrow$ Latice Boltzmann Method
               </div>
-				  </section>
-				</section>
-				<section>
-				  <section>
-				    <h1 class="r-fit-text" > Exemples </h1>
-				  </section>
-				  <section data-auto-animate>
-				    <h4>debye-hückel resolution</h4>
-				    <img src="assets/debye-hückel.svg" width="33%">
-				  </section>
-				  <section data-auto-animate>
-				    <h4>discretisation effect</h4>
-				    <img src="assets/debye-hückel.svg" width="33%">
-				    <img src="assets/prec.svg" width="33%">
-				  </section>
-				</section>
-				<section>
-				    <img src="assets/montaigne_logo.svg" width="80%">
-				</section>
+              <div style="flex-basis: 100%;">
+                <img src="assets/D3Q19.png" width="75%" alt="">
+              </div>
+              <div style="flex-basis: 100%; font-size: 40%;">
+                <em>figure : représentation de la géometrie D3Q19</em>
+              </div>
+            </div>
+            <div style="float: left; display: flex; align-items: center; justify-content: center; width: 100%">
+              <div style="flex-basis: 100%; font-size: 60%;">
+                Nernst-Planck $\rightarrow$ Link-Flux
+              </div>
+            </div>
+            <div style="float: left; display: flex; align-items: center; justify-content: center; width: 100%">
+              <div style="flex-basis: 100%; font-size: 60%;">
+                Poisson $\rightarrow$ over relaxation method
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1 style="font-size:60%">Etat stationnaire: Effet de la concentration</h1>
+            <p style="font-size:40%"> $\Delta V = 2.5 mV$ (domaine de validité de Debye-Hückel) et $L = 50 nm$</p>
+            <div style="float: left; height:30%; width:33%;">
+              <img src="assets/DH1.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%"> figure 4: $c_\infty = 1\cdot10^{-3} mol/L$</em>
+    			  </div>
+    			  <div style="float: left; height:30%; width:33%;">
+              <img src="assets/DH2.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%"> figure 5: $c_\infty = 1\cdot10^{-2} mol/L$</em>
+    			  </div>
+    			  <div style="float: left; height:30%; width:33%;">
+              <img src="assets/DH3.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%; "> figure 6: $c_\infty = 1\cdot10^{-1} mol/L$</em>
+    			  </div>
+          </section>
+          <section>
+            <h1 style="font-size:60%">Etat stationnaire: Effet du potentiel</h1>
+            <p style="font-size:40%"> $c_\infty = 1\cdot10^{-3} mol/L ~~~$ et $~~~ L = 50 nm$</p>
+            <div style="float: left; height:30%; width:33%;">
+              <img src="assets/DH1.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%"> figure 7: $\Delta V = 2.5 mV$</em>
+    			  </div>
+    			  <div style="float: left; height:30%; width:33%;">
+              <img src="assets/DH4.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%"> figure 8: $\Delta V = 25 mV$</em>
+    			  </div>
+    			  <div style="float: left; height:30%; width:33%;">
+              <img src="assets/DH7.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%"> figure 9: $\Delta V = 1 V$</em>
+    			  </div>
+          </section>
+          <section>
+            <h1 style="font-size:60%">Etat transitoire: Charge d'un condensateur</h1>
+            <p style="font-size:40%"> $c_\infty = 1\cdot10^{-3} mol/L ~~~$ et $~~~ L = 50 nm$</p>
+            <div style="float: left; height:30%; width:49%;">
+              <img src="assets/dynall.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%"> figure 10: Charge du condensateur en fonction du temps</em>
+    			  </div>
+    			  <div style="float: left; height:30%; width:49%;">
+              <img src="assets/dyn.svg" style="object-fit: contain; object-position: 50% 50%; margin:auto 0;" alt="">
+              <em style="font-size:40%"> figure 11: Charge du condensateur normalisé en fonction du temps</em>
+    			  </div>
+          </section>
+        </section>
+        <section>
+          <h1 style="font-size:140%;">Conclusion & ouverture</h1>
+          <ol>
+            <li class="fragment"> Changer la géometrie</li>
+          </ol>
+        </section>
 			</div>
 		</div>
 		<script src="dist/reveal.js"></script>

@@ -1,0 +1,299 @@
+<!doctype html>
+<html  lang="fr" xml:lang="fr">
+  <head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Laboetie</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+    <div class="reveal">
+			<div class="slides">
+        <section>
+          <section>
+            <div style="position: absolute; top: 0px; left: 0px;">
+              <img src="assets/Sorbonne_University.png" width="150" style="position: relative; top: 0px; left: 0px; padding: 0em 0em 0em .5em;" alt="logo Sorbonne">
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px;">
+              <img src="assets/Logo_phenix.svg" width="150" style="position: absolute; top: 70px; left: 0px; padding: 0em 0em 0em .5em;" alt="logo PENIX">
+      			</div>
+      			
+            <div style="position: relative; border: 5px solid gray;">
+              <h1 style="font-size:1em;">Simulations Lattices Boltzmann Electrocinetiques <br> et <br> application aux nano-condensateurs</h1>
+            </div>
+            <p>
+              <script> document.write(new Date().toLocaleDateString()); </script>
+            </p>
+          </section>
+          <section data-auto-animate>
+            <figure data-id="fig">
+              <blockquote cite="https://github.com/benrotenberg/laboetie">
+                laboetie is a fluid dynamics code for chemical applications.
+              </blockquote>
+              <figcaption style="font-size:.5em">$- \text{laboetie authors} -$</figcaption>
+            </figure>
+
+            <!-- Historically it has been used to simulate charged chemical species in a fluid medium. -->
+          </section>
+          <section data-auto-animate>  
+            <figure data-id="fig">
+              <blockquote cite="https://github.com/benrotenberg/laboetie">
+                laboetie is a fluid dynamics code for chemical applications.
+              </blockquote>
+              <figcaption style="font-size:.5em">$- \text{laboetie authors} -$</figcaption>
+            </figure>
+
+
+            <p style="position: relative; top: 0; left: -7em;">
+              <u>Plan:</u>
+            </p>
+
+            <ol style="list-style-type: upper-roman;">
+              <li class="fragment"> The physics </li>
+              <li class="fragment"> The numerical approach </li>
+              <li class="fragment"> Exemples </li>
+            </ol>
+          </section>
+				</section>
+				<section>
+				  <section>
+				    <h1 class="r-fit-text" > The physics </h1>
+				  </section>
+				  <section data-auto-animate>
+				    <h3> Introduction </h3>
+				    <h4> Poisson–Boltzmann equation</h4>
+				  </section>
+				  <section data-auto-animate>
+				    <h4> Poisson–Boltzmann equation</h4>
+				    <br>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Electrostatic potential :
+				      \[
+				        \vec{\nabla}^2 \psi = -\dfrac{e \sum_i z_i\rho_i}{\epsilon_0 \epsilon_r}
+				      \]
+				    </div>
+				    <div style="float: left; width: 10%; height: 4em;">
+				    </div>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Charge density :
+				      \[
+				        n'_i = n_i \exp\left( \frac{- z_i e \psi }{k_B T}\right)
+				      \]
+				    </div>
+				  </section>
+				  <section data-auto-animate>
+				    <h4> Poisson–Boltzmann equation</h4>
+				    <br>
+				    \[
+				      \vec{\nabla}^2 \psi = -\frac{1}{\epsilon_0 \epsilon_r}
+				      \sum_i \left\{ n_i(z_ie) 
+				      \exp\left( \frac{- z_i e \psi }{k_B T}\right) \right\}
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4>Debye-Hückel theory</h4>
+				    <br>
+				    1st order :
+				    \[
+				      \vec{\nabla}^2 \psi = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
+				      \sum_i n_i z_i^2 \psi
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4>Debye-Hückel theory</h4>
+				    <br>
+				    \[
+				      \left[\frac{e^2}{\epsilon_0 \epsilon_r k_B T}
+				      \sum_i n_i z_i^2 \right] = \left[ \vec{\nabla}^2 \right]
+				      = L^{-2}
+				    \]
+				    \[
+				      \frac{1}{\lambda_D^2} = \frac{e^2}{\epsilon_0 \epsilon_r k_B T}
+				      \sum_i n_i z_i^2 = \kappa^2
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4>Debye-Hückel theory</h4>
+				    <br>
+				    \[
+				      \vec{\nabla}^2 \psi_j = \kappa^2 \psi_j
+				    \]
+				  </section>
+				  <section data-auto-animate>
+				    <h4> Bjerrum length </h4>
+				    <br>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Electrostatic potential energy :
+				      \[
+				        \frac{q_1q_2}{4 \pi \epsilon_0 \epsilon_r}\frac{1}{r}
+				      \]
+				    </div>
+				    <div style="float: left; width: 10%; height: 4em;">
+				    </div>
+				    <div style="float: left; width: 45%; height: 4em">
+				      Thermal energy :
+				      \[
+				        k_B T
+				      \]
+				    </div>
+				  </section>
+				  <section data-auto-animate>
+				    <h4> Bjerrum length </h4>
+				    <br>
+				    \[
+				      \lambda_B = \frac{e^2}{4\pi\epsilon_0\epsilon_rk_BT}
+				    \]
+				  </section>
+				</section> 
+				<section>
+				  <section>
+				    <h1 class="r-fit-text" > The numerical approach </h1>
+				  </section>
+				  <section data-auto-animate>
+				    <p> Laboetie simulate charged chemical species in a fluid medium. </p>
+				  </section>
+				  <section data-auto-animate>
+				    <p> Laboetie simulate charged chemical species in a fluid medium. </p>
+				    $\downarrow$
+				    <div>
+				      <div style="float: left; width: 33%; height: 4em">
+				        Solve fluid dynamics
+				      </div>
+				      <div style="border-left: 3px solid #e6e6e6; float: left; width: 33%; height: 4em">
+				        Solve charged chemical dynamics
+				      </div>
+				      <div style="border-left: 3px solid #e6e6e6; float: left; width: 33%; height: 4em">
+				        Solve the electric potential
+				      </div>
+				    </div>
+				  </section>
+				  <section data-auto-animate>
+				    <h2 data-id="title_1"> Fluid dynamics </h2>
+				    <u style="float: left">Navier-Stokes equation :</u> 
+				    <!--for uncompresible fluid and k chemical species-->
+				    \[
+				      \rho \left(\pderiv{\u}{t} + \u \cdot \vec{\nabla} \u\right)
+              = \eta \vec{\nabla}^2 \u
+              - \sum^N_{k=1} \rho_k \vec{\nabla} \mu_k + \Fext
+				    \]
+				    <div>
+				    $\downarrow$
+				    </div>
+				    <div data-id="equation">
+				      <u style="float: left">Boltzmann equation :</u> 
+				      <!--for uncompresible fluid this time
+				          the species will act like forces on the fluid-->
+				        \[
+                  \pderiv{f}{t} + \v \cdot \vec{\nabla}_{\r} f
+                  + \frac{\Fext}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
+                \]
+              </div>
+				  </section>
+          <section data-auto-animate>
+				    <h2 data-id="title_1"> Fluid dynamics </h2>
+				    <div data-id="equation">
+				      <u style="float: left">Boltzmann equation :</u> 
+				      <!--for uncompresible fluid this time
+				          the species will act like forces on the fluid-->
+				        \[
+                  \pderiv{f}{t} + \v \cdot \vec{\nabla}_{\r} f
+                  + \frac{\Fext}{\rho} \cdot \vec{\nabla}_{\vec{v}} f = C(f)
+                \]
+              </div>
+              with $C(f)$ the BGK collision operator.
+              \[
+                C(f) := - \tau^{-1} \left( f - f^\text{eq} \right)
+              \]
+				  </section>
+				  <section>
+				    <h2 data-id="title_1"> charged chemical dynamics </h2>
+				    <div data-id="equation">
+				      <u style="float: left">link-flux method :</u>
+				        \[
+				          \pderiv{\rho_k}{t} = -D_k \vec{\nabla} \rho_k - z_k e D_k \rho_k \vec{\nabla} \psi
+                \]
+              </div>
+				  </section>
+				  <section>
+				    <h2 data-id="title_1"> Electric field </h2>
+				    <div data-id="equation">
+				      <u style="float: left">Poisson :</u>
+				        \[
+				          \vec{\nabla}^2 \psi = -\frac{e \sum_k z_k\rho_k}{\epsilon_0 \epsilon_r}
+                \]
+              </div>
+				  </section>
+				</section>
+				<section>
+				  <section>
+				    <h1 class="r-fit-text" > Exemples </h1>
+				  </section>
+				  <section data-auto-animate>
+				    <h4>debye-hückel resolution</h4>
+				    <img src="assets/debye-hückel.svg" width="33%">
+				  </section>
+				  <section data-auto-animate>
+				    <h4>discretisation effect</h4>
+				    <img src="assets/debye-hückel.svg" width="33%">
+				    <img src="assets/prec.svg" width="33%">
+				  </section>
+				</section>
+				<section>
+				    <img src="assets/montaigne_logo.svg" width="80%">
+				</section>
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			Reveal.initialize({
+    			keyboardCondition: null,
+    			keyboard: true,
+    			controls: true,
+			    controlsLayout: 'bottom-right',
+    			controlsBackArrows: 'faded',
+    			slideNumber: "h.v",
+				showSlideNumber: 'all',
+				progress: true,
+				hash: true,
+				touch: true,
+				loop: false,
+				rtl: false,
+				navigationMode: 'default',
+				shuffle: false,
+				autoPlayMedia: null,
+				preloadIframes: null,
+				autoAnimate: true,
+				hideInactiveCursor: true,
+				hideCursorTime: 1000,
+				transition: 'slide',
+                transitionSpeed: 'default',
+                backgroundTransition: 'fade',
+                math: {
+                    config: 'TeX-AMS_HTML-full',
+                    TeX: {
+                        Macros: {
+                            R: '\\mathbb{R}',
+                            set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ],
+                            u : '\\vec{u}',
+                            v : '\\vec{v}',
+                            r : '\\vec{r}',
+                            pderiv: ["\\dfrac{\\partial^{#1} #2}{{\\partial #3}^{#1}}",3 ," "],
+                            Fext: ["\\vec{F}^\\text{ext}"]
+                            
+                        }
+                    }
+                },
+				plugins: [RevealHighlight, RevealMath]
+			});
+		</script>
+	</body>
+</html>
